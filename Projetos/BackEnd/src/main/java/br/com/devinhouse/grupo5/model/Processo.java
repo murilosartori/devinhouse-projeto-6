@@ -43,15 +43,35 @@ public class Processo {
 	@ManyToOne
 	private Interessado cdInteressado;
 
+	@PrePersist
+	public void validaCamposAutoGerados() {
+		if (nuProcesso == null) {
+			nuProcesso = 0L;
+		}
+		chaveProcesso = String.format("%s %d/%s", this.sgOrgaoSetor, this.nuProcesso, this.nuAno);
+	}
+
+	@PostPersist
+	public void geraVaLoresCamposAutoGerados() {
+		nuProcesso = this.id;
+		chaveProcesso = String.format("%s %d/%s", this.sgOrgaoSetor, this.nuProcesso, this.nuAno);
+	}
+
 	@Builder(toBuilder = true)
-	public Processo(Long nuProcesso, String sgOrgaoSetor, String nuAno, String descricao, Assunto cdAssunto,
+	public Processo(String sgOrgaoSetor, String nuAno, String descricao, Assunto cdAssunto,
 					Interessado cdInteressado) {
-		this.nuProcesso = nuProcesso;
 		this.sgOrgaoSetor = sgOrgaoSetor;
 		this.nuAno = nuAno;
 		this.descricao = descricao;
 		this.cdAssunto = cdAssunto;
 		this.cdInteressado = cdInteressado;
-		this.chaveProcesso = this.sgOrgaoSetor + " " + this.nuProcesso + "/" + this.nuAno;
+//		this.chaveProcesso = this.sgOrgaoSetor + " " + this.nuProcesso + "/" + this.nuAno;
+	}
+
+	public Long getNuProcesso() {
+//		if (nuProcesso == null) {
+//			nuProcesso = 0L;
+//		}
+		return this.id;
 	}
 }

@@ -11,8 +11,8 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class ProcessoInputDTO {
 
-  @NotNull
-  private Long nuProcesso;
+//  @NotNull
+//  private Long nuProcesso;
   @NotNull
   private String sgOrgaoSetor;
   @NotNull
@@ -24,8 +24,8 @@ public class ProcessoInputDTO {
   @NotNull
   private Long cdInteressado;
 
-  public String getChaveProcesso() {
-    return sgOrgaoSetor + " " + nuProcesso + "/" + nuAno;
-  }
+//  public String getChaveProcesso() {
+//    return sgOrgaoSetor + " " + nuProcesso + "/" + nuAno;
+//  }
 
 }
