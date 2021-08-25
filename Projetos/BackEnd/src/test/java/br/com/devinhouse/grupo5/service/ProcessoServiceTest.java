@@ -302,7 +302,6 @@ class ProcessoServiceTest {
 		InteressadoOutputDTO interessadoOutputDTO = new InteressadoOutputDTO();
 
 		ProcessoInputDTO processoInputDTO = new ProcessoInputDTO(
-				1L,
 				"SOFT",
 				"2020",
 				"Teste",
@@ -310,7 +309,6 @@ class ProcessoServiceTest {
 				1L
 		);
 		Processo processo = new Processo(
-				processoInputDTO.getNuProcesso(),
 				processoInputDTO.getSgOrgaoSetor(),
 				processoInputDTO.getNuAno(),
 				processoInputDTO.getDescricao(),
